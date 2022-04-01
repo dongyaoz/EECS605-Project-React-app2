@@ -172,7 +172,6 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Emotion Recognition Website by Dongyao</h1>
       <div className="Input">
         <h1>Input</h1>
         <label htmlFor="demo-dropdown">Demo: </label>
