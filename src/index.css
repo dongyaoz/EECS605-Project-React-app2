@@ -12,7 +12,13 @@ code {
     monospace;
 }
 
-.Intro {
+.Start {
   display: flex;
   justify-content: center;
+}
+
+.Intro {
+  margin: 16px;
+  width: 800px;
+  text-align: center;
 }
