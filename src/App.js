@@ -7,18 +7,8 @@ const ML_API_ENDPOINT = 'https://p0tgg9r4fk.execute-api.us-east-2.amazonaws.com/
 
 
 // // atob is deprecated but this function converts base64string to text string
-// const decodeFileBase64 = (base64String) => {
-//   // From Bytestream to Percent-encoding to Original string
-//   return decodeURIComponent(
-//     atob(base64String).split("").map(function (c) {
-//       return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-//     }).join("")
-//   );
-// };
 const decodeFile1Base64 = (base64String) => {
   // From Bytestream to Percent-encoding to Original string
-  
-//   return "data:image/png;base64," + base64String;
   return decodeURIComponent(
     atob(base64String).split("").map(function (c) {
       return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
@@ -27,15 +17,13 @@ const decodeFile1Base64 = (base64String) => {
 };
 
 const decodeFile2Base64 = (base64String) => {
-  // From Bytestream to Percent-encoding to Original string
-  
+  // From Bytestream to Percent-encoding to Original string  
   return "data:image/png;base64," + base64String;
 };
 
 
 function App() {
   const [inputFileData, setInputFileData] = React.useState(''); // represented as bytes data (string)
-//   const [outputFileData, setOutputFileData] = React.useState(''); // represented as readable data (text string)
   const [outputFileData1, setOutputFileData1] = React.useState(''); // represented as bytes data (string)
   const [outputFileData2, setOutputFileData2] = React.useState(''); // represented as bytes data (string)
   const [inputImage, setInputImage] = React.useState(''); // represented as bytes data (string)
@@ -99,9 +87,8 @@ function App() {
     setButtonDisable(false);
 
     // clear response results
-//     setOutputFileData('');
-    setOutputFileData1("");
-    setOutputFileData2("");
+    setOutputFileData1('');
+    setOutputFileData2('');
 
     // reset demo dropdown selection
     setSelectedDropdownFile('');
@@ -126,15 +113,12 @@ function App() {
       // POST request error
       if (data.statusCode === 400) {
         const outputErrorMessage = JSON.parse(data.errorMessage)['outputResultsData'];
-//         setOutputFileData(outputErrorMessage);
         setOutputFileData1(outputErrorMessage);
         setOutputFileData2(outputErrorMessage);
       }
 
       // POST request success
       else {
-//         const outputBytesData = JSON.parse(data.body)['outputResultsData'];
-//         setOutputFileData(decodeFileBase64(outputBytesData));
         const outputBytesData1 = JSON.parse(data.body)['outputResultsData1'];
         const outputBytesData2 = JSON.parse(data.body)['outputResultsData2'];
         setOutputFileData1(decodeFile1Base64(outputBytesData1));
@@ -205,7 +189,6 @@ function App() {
       </div>
       <div className="Output">
         <h1>Results</h1>
-//         <p>{outputFileData}</p>
         <img src = {outputFileData2} alt='output'/>
         <p>{outputFileData1}</p>
       </div>
